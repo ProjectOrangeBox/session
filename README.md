@@ -5,7 +5,7 @@ Thin wrapper around [aplus-framework/session](https://docs.aplus-framework.com/g
 ## Example
 
 ```php
-use peels\session\Session;
+use orange\session\Session;
 
 $session = Session::getInstance($options); // options passed through to the aplus-framework session
 

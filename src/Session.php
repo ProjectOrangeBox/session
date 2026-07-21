@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace peels\session;
+namespace orange\session;
 
 use Framework\Session\SaveHandler;
 use Framework\Session\Session as aplusSession;

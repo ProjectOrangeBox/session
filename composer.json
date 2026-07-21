@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "peels\\session\\": "src/"
+            "orange\\session\\": "src/"
         }
     },
     "minimum-stability": "dev",
