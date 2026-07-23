@@ -34,6 +34,6 @@ interface SessionInterface
     public function getTemp(string $key): mixed;
     public function setTemp(string $key, mixed $value, int $ttl = 60): static;
     public function removeTemp(string $key): static;
-    public function id(string $newId = null): string | false;
+    public function id(?string $newId = null): string | false;
     public function gc(): int | false;
 }
