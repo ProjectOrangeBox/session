@@ -11,12 +11,12 @@ class Session extends aplusSession implements SessionInterface
 {
     private static SessionInterface $instance;
 
-    public function __construct(array $options = [], SaveHandler $handler = null)
+    public function __construct(array $options = [], ?SaveHandler $handler = null)
     {
         parent::__construct($options, $handler);
     }
 
-    public static function getInstance(array $options = [], SaveHandler $handler = null): self
+    public static function getInstance(array $options = [], ?SaveHandler $handler = null): self
     {
         if (!isset(self::$instance)) {
             self::$instance = new self($options, $handler);
