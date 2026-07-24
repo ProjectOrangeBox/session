@@ -9,7 +9,7 @@ use Framework\Session\Session as aplusSession;
 
 class Session extends aplusSession implements SessionInterface
 {
-    private static SessionInterface $instance;
+    private static self $instance;
 
     public function __construct(array $options = [], ?SaveHandler $handler = null)
     {

@@ -15,7 +15,9 @@
         "source": "https://github.com/ProjectOrangeBox/session"
     },
     "require": {
-        "php": ">=8.4"
+        "php": ">=8.4",
+        "orange/framework": "dev-master",
+        "aplus/session": "^4.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^13.2"
