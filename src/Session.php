@@ -13,7 +13,21 @@ class Session extends aplusSession implements SessionInterface
 
     public function __construct(array $options = [], ?SaveHandler $handler = null)
     {
-        parent::__construct($options, $handler);
+        // three layers, each overriding the one before: aplus's defaults, this
+        // package's hardened ones, then whatever the caller asked for. See
+        // config/session.php for why the security-relevant options are pinned
+        // here instead of being inherited.
+        parent::__construct(array_replace(self::secureDefaults(), $options), $handler);
+    }
+
+    /**
+     * This package's session option defaults.
+     *
+     * @return array<string, int|string|bool>
+     */
+    public static function secureDefaults(): array
+    {
+        return require __DIR__ . '/config/session.php';
     }
 
     public static function getInstance(array $options = [], ?SaveHandler $handler = null): self
