@@ -11,6 +11,9 @@ class Session extends aplusSession implements SessionInterface
 {
     private static self $instance;
 
+    /**
+     * @param array<string, int|string|bool> $options
+     */
     public function __construct(array $options = [], ?SaveHandler $handler = null)
     {
         // three layers, each overriding the one before: aplus's defaults, this
@@ -30,6 +33,9 @@ class Session extends aplusSession implements SessionInterface
         return require __DIR__ . '/config/session.php';
     }
 
+    /**
+     * @param array<string, int|string|bool> $options
+     */
     public static function getInstance(array $options = [], ?SaveHandler $handler = null): self
     {
         if (!isset(self::$instance)) {

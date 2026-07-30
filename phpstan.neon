@@ -1,5 +1,5 @@
 parameters:
-    level: 5
+    level: 8
     paths:
         - src
     # The framework's global helper functions (logMsg, container, config, ...)
@@ -22,3 +22,13 @@ parameters:
             # PHPStan has no way to know which property names are valid - this is
             # the framework's intended DI pattern, not a bug.
             message: '#^Access to an undefined property orange\\framework\\interfaces\\ContainerInterface::\$#'
+        -
+            # aplus types Session::__construct()'s $options as
+            # array<string, int|string>, but PHP's session options genuinely
+            # accept bools - cookie_secure and cookie_httponly are the obvious
+            # ones, and config/session.php sets cookie_secure => true on
+            # purpose. This package's own tests assert those stay bools, so the
+            # annotation is wrong rather than the code. Third-party signature
+            # imprecision, same category as handlebars/LightnCandy.
+            message: '#^Parameter \#1 \$options of method Framework\\Session\\Session::__construct\(\) expects array<string, int\|string>#'
+            path: src/Session.php

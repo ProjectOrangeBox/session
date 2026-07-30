@@ -10,6 +10,7 @@ interface SessionInterface
     public function __set(string $key, mixed $value): void;
     public function __isset(string $key): bool;
     public function __unset(string $key): void;
+    /** @param array<string, int|string|bool> $customOptions */
     public function start(array $customOptions = []): bool;
     public function activate(): bool;
     public function isActive(): bool;
@@ -19,11 +20,18 @@ interface SessionInterface
     public function abort(): bool;
     public function has(string $key): bool;
     public function get(string $key): mixed;
+    /** @return array<string, mixed> */
     public function getAll(): array;
+    /**
+     * @param array<array-key, string> $keys
+     * @return array<string, mixed>
+     */
     public function getMulti(array $keys): array;
     public function set(string $key, mixed $value): static;
+    /** @param array<string, mixed> $items */
     public function setMulti(array $items): static;
     public function remove(string $key): static;
+    /** @param array<array-key, string> $keys */
     public function removeMulti(array $keys): static;
     public function removeAll(): static;
     public function regenerateId(bool $deleteOldSession = false): bool;
